@@ -19,8 +19,8 @@ function App() {
   };
 
   const handleEdit = (index: number) => {
-    setIsEditing(index); // Set the todo to be edited
-    setEditText(todos[index]); // Set the current text of the todo to be edited
+    setIsEditing(index); 
+    setEditText(todos[index]);
   };
 
   const handleSaveEdit = (index: number) => {
