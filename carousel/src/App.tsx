@@ -1,3 +1,4 @@
+import Carousel from "./components/Carousel"
 
 
 function App() {
@@ -5,6 +6,7 @@ function App() {
 
   return (
 <>
+<Carousel/>
 </>
   )
 }
