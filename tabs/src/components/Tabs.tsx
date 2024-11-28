@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const Tabs = () => {
   const [selectedTab, setSelectedTab] = useState<number | null>(null);
@@ -33,9 +33,7 @@ const Tabs = () => {
     setSelectedTab(id);
   };
 
-  useEffect(() => {
-    console.log("Selected Tab ID:", selectedTab);
-  }, [selectedTab]);
+
 
   return (
     <div>
