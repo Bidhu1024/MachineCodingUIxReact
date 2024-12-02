@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import { useEffect, useState } from "react";
+import "./App.css";
 function App() {
-  const [count, setCount] = useState(0)
+  const [products, setProducts] = useState([]);
+  const [page, setPage] = useState<number>(1);
 
+  const fetchProducts = async () => {
+    const res = await fetch("https://dummyjson.com/products?limit=100");
+    const data = await res.json();
+    if (data && data.products) {
+      setProducts(data.products);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+  console.log(products);
+  const selectPageHandler=(id:number)=>{
+    if(id>=1 && id<=products.length/10 && id !==page) 
+setPage(id)
+  }
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {products.length > 0 && (
+        <div className="products">
+          {products.slice(page * 10 - 10, page * 10).map((product: any) => {
+            return (
+              <span className="products__single" key={product.id}>
+                <img src={product.thumbnail} alt="dfdf" />
+                <span>{product.title}</span>
+              </span>
+            );
+          })}
+        </div>
+      )}
+      {products.length > 0 && (
+        <div className="pagination">
+          <span onClick={()=>selectPageHandler(page-1)}>⬅️</span>
+          {[...Array(products.length / 10)].map((_, index) => {
+            return <span onClick={()=>selectPageHandler(index+1)} key={index}>{index + 1}</span>;
+          })}
+          <span onClick={()=>selectPageHandler(page+1)}>▶️</span>
+        </div>
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
