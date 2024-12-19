@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 const AccordionList = () => {
-
-
   const [selectedId, setSelectedId] = useState<number | null>(null);
     const items = [{
         header:"Item 1",
@@ -36,7 +34,7 @@ const handleAccordion = (id:number)=>{
             <div key={item.id} style={{height:selectedId === item.id?"80px":"50px",border:"1px solid black",padding:"1rem"}}>
               <div style={{display:"flex", justifyContent:"space-between",}}>
               <p>{item.header}</p> 
-              <button onClick={()=>{
+              <button style={{width:"4rem",height:'2rem'}} onClick={()=>{
                 handleAccordion(item.id)
 
               }}>{selectedId === item.id ? "up":"down"}</button>
