@@ -26,3 +26,8 @@
   left: 50%;
   top: 50%;
 }
+.image-text{
+  position: absolute;
+  left: 50%;
+  top: 85%;
+}

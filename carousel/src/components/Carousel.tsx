@@ -24,6 +24,10 @@ const Carousel = () => {
         className="image"
         alt="fff"
       />
+<div className="image-text">
+      {RESNET50_IMAGE_URLS[index].text}
+      </div>
+
 
       <button
         className="right-button"
