@@ -15,7 +15,6 @@ function App() {
   useEffect(() => {
     fetchProducts();
   }, []);
-  console.log(products);
   const selectPageHandler=(id:number)=>{
     if(id>=1 && id<=products.length/10 && id !==page) 
 setPage(id)
