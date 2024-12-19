@@ -32,7 +32,7 @@ const handleAccordion = (id:number)=>{
       {items.map((item)=>{
         return (
             <div key={item.id} style={{height:selectedId === item.id?"80px":"50px",border:"1px solid black",padding:"1rem"}}>
-              <div style={{display:"flex", justifyContent:"space-between",}}>
+              <div style={{display:"flex", justifyContent:"space-between"}}>
               <p>{item.header}</p> 
               <button style={{width:"4rem",height:'2rem'}} onClick={()=>{
                 handleAccordion(item.id)
